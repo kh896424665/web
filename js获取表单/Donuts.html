@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Duncan's just In Time Donuts</title>
+        <link rel="stylesheet" href="./css/Donuts.css">
+        <script type="text/javascript" src="./js/Donuts.js">
+
+        </script>
+    </head>
+    <body>
+        <h2>Duncan's Just-In-Time Donuts</h2>
+        <h4>All donuts 50 cent each,cake or glazed!</h4>
+        <div class="box">
+            <form class="" method="post">
+                <fieldset>
+                    <p>
+                        <label>Name:</label>
+                        <input id="name" type="text" name="Name" value="">
+                    </p>
+                    <p>
+                        <label>#of cake donuts:</label>
+                        <input id="cakedonuts" type="text" name="number" value="" onchange="updateOrder();">
+                    </p>
+                    <p>
+                        <label>#of glazed donuts:</label>
+                        <input id="glazeddonuts" type="text" name="number" value="" onchange="updateOrder();">
+                    </p>
+                    <p>
+                        <label>Minute 'till pickup:</label>
+                        <input id="minute" type="number" name="minute" value="">
+                    </p>
+                    <p>
+                        <label>Subtotal:</label>
+                        <input id="subTotal" type="text" name="subtotal" value="">
+                    </p>
+                    <p>
+                        <label>Tax:</label>
+                        <input id="tax" type="text" name="tax" value="">
+                    </p>
+                    <p>
+                        <label>Total:</label>
+                        <input id="total" type="text" name="total" value="">
+                    </p>
+                    <input class="subright" type="button" name="submit" value="Place Order" onclick="placeOrder();">
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
