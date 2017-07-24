@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Youcube - The Blog of Cube Puzzlers</title>
+        <script type="text/javascript">
+            function Blog(body,date){
+                this.body=body;
+                this.date=date;
+            }
+            var blog=[
+                new Blog("Got the new cube i ordered..",new Date("08/14/2008")),
+                new Blog("Sove the new cube but of course..",new Date("08/19/2008")),
+                new Blog("Managed to get a headache toiling..",new Date("08/16/2008")),
+                new Blog("Found a 7x7x7 cube for sale online..",new Date("08/21/2008")),
+                new Blog("My name is kang hui",new Date("08/29/2008"))
+            ];
+            blog.sort(function(blog1,blog2) {return blog2.date-blog1.date;});//对blog数组内时间降序排列
+            function showBlog(numEntries) {
+                if(!numEntries)
+                numEntries=blog.length;
+                var i=0,blogText="";
+                while (i<blog.length&&i<numEntries) {
+                    if(i%2 == 0)        //隔开打印不同背景
+                        blogText +="<p style='background-color:#EEEEEE'>";
+                    else {
+                        blogText +="<p>";
+                    }
+                    blogText +="<strong>"+(blog[i].date.getMonth()+1)+"/"+blog[i].date.getDate()+"/"+blog[i].date.getFullYear()+"</strong><br/>"+blog[i].body+"</p>";
+                    i++;
+            }
+            document.getElementById("blog").innerHTML=blogText;
+            }
+            function searchBlog() {
+                var searchtext=document.getElementById("searchtext").value;
+                for (var i = 0; i < blog.length; i++) {
+                    if (blog[i].body.toLowerCase().indexOf(searchtext.toLowerCase())!=-1) {
+                        alert("["+(blog[i].date.getMonth()+1)+"/"+blog[i].date.getDate()+"/"+blog[i].date.getFullYear()+"]"+blog[i].body);
+                        break;
+                    }
+                }
+            if(i==blog.length)
+                alert("Sorry,there are no blog entriea containing the search text.");
+            }
+            function randomBlog() {
+                var i=Math.floor(Math.random()*blog.length);
+                alert("["+(blog[i].date.getMonth()+1)+"/"+blog[i].date.getDate()+"/"+blog[i].date.getFullYear()+"]"+blog[i].body);
+            }
+            </script>
+    </head>
+    <body>
+        <h3>Youcube - The Blog of Cube Puzzlers</h3><br>
+        <input type="button" id="search" name="" value="Search the Blog" onclick="searchBlog()"/>
+        <input type="text" id="searchtext"  name="searchtext" value=""/><br><br>
+        <input type="button" id="randomsearch" value="View a Random Blog Entey" onclick="randomBlog()"/"><br>
+        <img src="cube.jpg" alt="youcube" width="200px" height="200px"><br>
+        <div id="blog">
+
+        </div><br>
+        <input type="button" id="showall" value="Show all blog entries" onclick="showBlog();" />
+    </body>
+</html>

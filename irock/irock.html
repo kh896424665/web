@@ -4,11 +4,14 @@
     <meta charset="utf-8">
     <title>my pet irock</title>
     <link rel="stylesheet" href="irock.css">
-    <script type="text/javascript" src="irock.js"></script>
+    <script type="text/javascript" src="irock.js">
+
+    </script>
   </head>
-  <body onload="alert('Hello，I am your pet rock');">
+  <body onload="resizeRock();greetUser();" onresize="resizeRock();">
     <div>
       <img id="rocking" src="irock1.jpg" alt="rock" onclick="touchRock();">
+
     </div>
   </body>
 </html>
