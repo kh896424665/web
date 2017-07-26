@@ -8,22 +8,24 @@
             function Blog(body,date){
                 this.body=body;
                 this.date=date;
+            }
                 //Return a string representation od the blog entry
-                this.toString=function(){
+                Blog.prototype.toString=function(){
                     return "["+(this.date.getMonth()+1)+"/"+this.date.getDate()+"/"+this.date.getFullYear()+"]"+this.body;
                 };
                 //Return a format HTMl
-                this.toHTML=function(highlight){
+                Blog.prototype.toHTML=function(highlight){
                     var blogHTML="";
                     blogHTML +=highlight?"<p style='background-color:#EEEEEE'>" :"<p>";
-                    blogHTML +="<strong>"+(this.date.getMonth()+1)+"/"+this.date.getDate()+"/"+this.date.getFullYear()+"<strong><br/>"+this.body+"</p>";
+                    blogHTML +="<strong>"+(this.date.getMonth()+1)+"/"+this.date.getDate()+"/"+this.date.getFullYear()+"<strong><br/>"+this.body+"<br/>"+"<em>"+this.signature+"</em>"+"</p>";
                     return blogHTML;
                 };
                 //See if the blog body contains a string of text
-                this.containsText=function(text){
+                Blog.prototype.containsText=function(text){
                     return (this.body.toLowerCase().indexOf(text.toLowerCase())!=-1);
                 };
-            }
+                Blog.prototype.signature="Write by KangHui";
+
             var blog=[
                 new Blog("Got the new cube i ordered..",new Date("08/14/2008")),
                 new Blog("Sove the new cube but of course..",new Date("08/19/2008")),
