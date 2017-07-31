@@ -5,9 +5,10 @@
         <meta charset="utf-8">
         <title>Youcube - The Blog of Cube Puzzlers</title>
         <script type="text/javascript">
-            function Blog(body,date){
+            function Blog(body,date,image){
                 this.body=body;
                 this.date=date;
+                this.image=image;//image为可选自变量必须在自变量列表的最后面
             }
                 //Return a string representation od the blog entry
                 Blog.prototype.toString=function(){
@@ -15,19 +16,31 @@
                 };
                 //Return a format HTMl
                 Blog.prototype.toHTML=function(highlight){
-                    var blogHTML="";
-                    blogHTML +=highlight?"<p style='background-color:#EEEEEE'>" :"<p>";
-                    blogHTML +="<strong>"+(this.date.getMonth()+1)+"/"+this.date.getDate()+"/"+this.date.getFullYear()+"<strong><br/>"+this.body+"<br/>"+"<em>"+this.signature+"</em>"+"</p>";
+
+                    var blogHTML=" ";
+                    if (this.image) {
+                        blogHTML +="<strong>"+this.date.shortFormat()+"</strong><br/><table><tr><td><img src='"+this.image+"'/></td><td style='vertical-align:top'>"+this.body+"</td></tr></table><em>"+this.signature+"</em></p>";
+                    }
+                    else{
+                        blogHTML +="<strong>"+this.date.shortFormat()+"</strong><br/>"+this.body+"<br/><em>"+this.signature+"</em></p>";
+                    }
                     return blogHTML;
+                    /*var blogHTML="";
+                    blogHTML +=highlight?"<p style='background-color:#EEEEEE'>" :"<p>";
+                    blogHTML  +="<strong>"+(this.date.getMonth()+1)+"/"+this.date.getDate()+"/"+this.date.getFullYear()+"<strong><br/>"+this.body+"<br/>"+"<em>"+this.signature+"</em>"+"</p>";
+                    return blogHTML;*/
                 };
                 //See if the blog body contains a string of text
                 Blog.prototype.containsText=function(text){
                     return (this.body.toLowerCase().indexOf(text.toLowerCase())!=-1);
                 };
                 Blog.prototype.signature="Write by KangHui";
+                Blog.blogSorter=function(blog1,blog2){
+                    return blog2.date-blog1.date;
+                }
 
             var blog=[
-                new Blog("Got the new cube i ordered..",new Date("08/14/2008")),
+                new Blog("Got the new cube i ordered..",new Date("08/14/2008"),"first.jpg"),
                 new Blog("Sove the new cube but of course..",new Date("08/19/2008")),
                 new Blog("Managed to get a headache toiling..",new Date("08/16/2008")),
                 new Blog("Found a 7x7x7 cube for sale online..",new Date("08/21/2008")),
@@ -35,7 +48,8 @@
             ];
 
             function showBlog(numEntries) {
-                blog.sort(function(blog1,blog2) {return blog2.date-blog.date;});
+                blog.sort(Blog.blogSorter);
+                //blog.sort(function(blog1,blog2) {return blog2.date-blog.date;});
                 if(!numEntries){
                     numEntries=blog.length;
                 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BSI Case 2:wining Caller</title>
+        <script type="text/javascript">
+            var callNum=0;
+            function checkWinner(form,caller,winningNum) {
+                var callNum;
+                ++callNum;
+
+            if (callNum==winningNum) {
+                alert(caller+",caller number" +callNum+"...today's winner!");
+                form.sumbit();
+            }
+            else{
+                var callerField=document.getElementById('caller');
+                callerField.value="Next caller";
+                callerField.focus();
+                callerField.select();
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <form class="" name="callform" action="radiocall.php" method="POST">
+            <img src="radio.png" alt="radio"/>
+            Caller name:<input type="text" id="caller" name="caller" value="text"/>
+            <input type="button" name="" value="Call" onclick="checkWinner(this.form,document.getElementById('call').value,7)"/>
+
+        </form>
+    </body>
+</html>
