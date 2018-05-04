@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Image Gallery</title>
+        <link rel="stylesheet" href="css/css.css">
+
+    </head>
+    <body>
+        <h1>Snapshots</h1>
+<!--使用内部onclick，没有分离
+        <ul>
+            <li><a href="images/1.jpg" title="Clould" onclick=" showPic(this);event.returnValue = false;" >Clould</a></li>
+            <li><a href="images/2.jpg" title="Iphone" onclick="showPic(this);event.returnValue = false;">Phone</a></li>
+            <li><a href="images/3.jpg" title="Building" onclick="showPic(this); return false;">Building</a></li>
+            <li><a href="images/4.jpg" title="Girl" onclick="showPic(this); return false;">Girl</a></li>
+        </ul>
+-->
+        <ul id="imagegallery">
+            <li><a href="images/1.jpg" title="Clould"><img src="images/1.jpg" alt=""></a></li>
+            <li><a href="images/2.jpg" title="Iphone"><img src="images/2.jpg" alt=""></a></li>
+            <li><a href="images/3.jpg" title="Building"><img src="images/3.jpg" alt=""></a></li>
+            <li><a href="images/4.jpg" title="Girl"><img src="images/4.jpg" alt=""></a></li>
+        </ul>
+<!--尝试分离，用DOM实现
+        <img src="images/placeholder.jpg" alt="placeholder" id="placeholder">
+        <p id="description">Choose an image</p>
+-->
+        <a href="http://www.baidu.com" class="popUp">Example</a>
+        <script src="js/showPic.js"></script>
+        </body>
+</html>
